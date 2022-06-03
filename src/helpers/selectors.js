@@ -27,3 +27,21 @@ export function getInterview(state, interview) {
   
   return result
 }
+
+export function getInterviewersForDay(state, day) {
+  if (state.days.length < 1) return []
+
+  for (const i of state.days) {
+    // console.log(i.name)
+    let interviewers = []
+    if (i.name === day) {
+      for (const x of i.interviewers) {
+        // console.log(i.appointments)
+        interviewers.push(state.interviewers[x])
+      }
+      console.log(interviewers)
+      return interviewers
+    }
+  }
+  return []
+}
