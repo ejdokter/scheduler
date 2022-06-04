@@ -36,7 +36,7 @@ export function getInterviewersForDay(state, day) {
     let interviewers = []
     if (i.name === day) {
       for (const x of i.interviewers) {
-        // console.log(i.appointments)
+        console.log(i.interviewers, x)
         interviewers.push(state.interviewers[x])
       }
       console.log(interviewers)
