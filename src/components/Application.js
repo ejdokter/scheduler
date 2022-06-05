@@ -42,6 +42,26 @@ export default function Application(props) {
     })
   }, [])
 
+  function bookInterview(id, interview) {
+    console.log(id, interview)
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    }
+    console.log(appointment)
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+
+    setState({
+      ...state,
+      appointments
+    })
+  }
+
+
   const dailyAppointments = getAppointmentsForDay(state, state.day)
   const interviewers = getInterviewersForDay(state, state.day)
   // console.log(interviewers)
@@ -54,6 +74,7 @@ export default function Application(props) {
       time={appointment.time}
       interview={interview}
       interviewers={interviewers}
+      bookInterview={bookInterview}
       />
     )
   })
@@ -83,7 +104,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {schedule}
-        <Appointment key="last" time="5pm" />
+        <Appointment key="last" time="5pm" bookInterview={bookInterview} />
       </section>
     </main>
   );
