@@ -6,6 +6,8 @@ import Show from "./Show.js"
 import Empty from "./Empty.js"
 import useVisualMode from 'hooks/useVisualMode.js'
 import Form from './Form.js'
+import Status from './Status.js'
+import axios from 'axios'
 
 
 export default function Appointment(props) {
@@ -26,7 +28,9 @@ export default function Appointment(props) {
     }
     transition(SAVING)
 
-    props.bookInterview(props.id, interview)
+    props.bookInterview(props.id, interview).then(() => {
+      transition(SHOW)
+    })
   }
 
   return (
@@ -48,7 +52,9 @@ export default function Appointment(props) {
           onSave={save}
 
         />
-
+      )}
+      {mode === SAVING && (
+        <Status message="Saving"/>
       )}
     </article>
     
