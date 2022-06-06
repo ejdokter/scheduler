@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios"
+import { getSpotsForDay } from "helpers/selectors";
 
 export default function useApplicationData() {
 
@@ -23,6 +24,16 @@ export default function useApplicationData() {
     })
   }, [])
 
+  function updateSpots(state, appointments, id) {
+
+    const dayObj = state.days.find(day => day.name === state.day);
+    const spots = getSpotsForDay(dayObj, appointments)
+
+    const day = {...dayObj, spots}
+
+    return state.days.map(d => d.name === state.day ? day : d)
+  }
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -35,9 +46,11 @@ export default function useApplicationData() {
       [id]: appointment
     }
 
+    const days = updateSpots(state, appointments, id)
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview:interview})
     .then(() => {
-      setState({ ...state, appointments})
+      setState({ ...state, appointments, days})
     })
   }
 
@@ -53,9 +66,11 @@ export default function useApplicationData() {
       [id]: appointment
     }
 
+    const days = updateSpots(state, appointments, id)
+
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
     .then(res => {
-      setState({ ...state, appointments})
+      setState({ ...state, appointments, days})
     })
   }
   return {
