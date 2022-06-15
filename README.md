@@ -6,17 +6,27 @@ Interview Scheduler is a single page application to book and manage appointments
 
 ### Main Page
 
-![]()
+![Main Page](https://github.com/ejdokter/scheduler/blob/master/public/Screenshots/main_page.png?raw=true)
 
 ### Adding Appointment
 
+![Add Appointment](https://github.com/ejdokter/scheduler/blob/master/public/Screenshots/create_appointment.png?raw=true)
+
 ### Error: Student Name
+
+![Student Name Error](https://github.com/ejdokter/scheduler/blob/master/public/Screenshots/error_student_name.png?raw=true)
 
 ### Error: Interviewer Not Selected
 
+![Interviewer Error](https://github.com/ejdokter/scheduler/blob/master/public/Screenshots/error_interviewer.png?raw=true)
+
 ### Appointment Created
 
+![Appointment Created](https://github.com/ejdokter/scheduler/blob/master/public/Screenshots/appointment_created.png?raw=true)
+
 ### Deleting Appointment
+
+![Delete Appointment](https://github.com/ejdokter/scheduler/blob/master/public/Screenshots/delete_appointment.png?raw=true)
 
 ## Setup
 
